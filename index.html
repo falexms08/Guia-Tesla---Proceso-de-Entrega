@@ -7,84 +7,224 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
         
-        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: #f8f9fa; }
-        header { background: linear-gradient(135deg, #cc0000, #ff3333); color: white; padding: 25px 15px; text-align: center; }
-        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
+        body {
+            font-family: 'Roboto', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #cc0000, #ff3333);
+            color: white;
+            padding: 30px 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3);
+        }
+        
+        h1 { margin: 0 0 8px 0; font-size: 2.1em; }
+        .subtitle { font-size: 1.15em; opacity: 0.95; }
+        
+        .container { max-width: 920px; margin: 20px auto; padding: 0 15px; }
+        
+        .warning {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 16px;
+            margin: 20px 0;
+            font-size: 1.05em;
+        }
         
         .accordion {
             background: white;
-            margin-bottom: 12px;
             border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
             overflow: hidden;
         }
         
         .accordion-header {
-            padding: 18px 20px;
+            padding: 20px 22px;
+            background: #f8f9fa;
             cursor: pointer;
             display: flex;
             align-items: center;
-            background: #f8f9fa;
+            font-size: 1.1em;
             font-weight: 600;
+            transition: background 0.3s;
         }
+        
+        .accordion-header:hover { background: #f1f3f5; }
         
         .step-number {
             background: #cc0000;
             color: white;
-            width: 30px; height: 30px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 16px;
             font-weight: bold;
+            flex-shrink: 0;
         }
         
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: all 0.4s ease;
-            padding: 0 20px;
+            padding: 0 22px;
         }
         
         .accordion-content.open {
             max-height: 2000px;
-            padding: 20px;
+            padding: 22px;
         }
         
         .content-box {
             background: #f0f7ff;
             border-left: 5px solid #0066cc;
-            padding: 16px;
+            padding: 18px;
             border-radius: 8px;
+            margin: 12px 0;
+        }
+        
+        .important {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 15px;
+            color: #555;
+            font-size: 1.2em;
+            font-weight: 500;
         }
         
         .share-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             background: #cc0000;
             color: white;
-            padding: 14px 20px;
+            padding: 16px 22px;
             border-radius: 50px;
             font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-size: 1.1em;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>🚗⚡ Guía Tesla - Entrega de Vehículo</h1>
-        <p>Persona Física (Pago de Contado)</p>
+        <h1>🚗 Guía Tesla</h1>
+        <p class="subtitle">Proceso de Entrega - Persona Física (Pago de Contado)</p>
     </header>
-    
+
     <div class="container">
-        <!-- Aquí pega todo el contenido de los acordeones que te di antes (los 6 pasos) -->
-        <!-- ... (copia los 6 accordiones de mi respuesta anterior) ... -->
+        <div class="warning">
+            <strong>Importante (Plazo para recibir tu vehículo):</strong><br>
+            Si tu orden ya tiene un vehículo asignado, es indispensable que lo recibas dentro de los siguientes 15 días como máximo. De lo contrario, el sistema reasignará automáticamente ese vehículo.
+        </div>
+
+        <!-- Paso 1 -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="step-number">1</div>
+                Completa tu perfil en la App de Tesla
+            </div>
+            <div class="accordion-content">
+                <div class="content-box">
+                    <p>Justo después de crear tu orden, completa tu perfil en la aplicación de Tesla. Es un proceso sencillo que solo requiere los siguientes documentos recientes (no mayores a 2 meses):</p>
+                    <ul>
+                        <li>INE (vigente, por ambos lados)</li>
+                        <li>Constancia de Situación Fiscal (activa)</li>
+                        <li>CURP</li>
+                        <li>Comprobante de domicilio</li>
+                    </ul>
+                    <p class="important"><strong>Importante:</strong> Todos los documentos deben estar a nombre de la persona a cuyo nombre se emitirá la factura. Si no tienes segundo nombre, ingresa un "." o "-" como relleno.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="step-number">2</div>
+                Firma de declaratoria
+            </div>
+            <div class="accordion-content">
+                <div class="content-box">
+                    <p>Una vez que hayas completado tu perfil, Tesla te enviará un formato de identificación (declaratoria). Revísalo con atención y fírmalo. Al firmarlo, confirmas que toda la información es correcta.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="step-number">3</div>
+                Realiza tu pago
+            </div>
+            <div class="accordion-content">
+                <div class="content-box">
+                    <p>Realiza la transferencia (o transferencias) por el monto total del vehículo.</p>
+                    <p><strong>Nota:</strong> Puedes hacer de 1 a 3 transferencias. Deben provenir de cuentas a nombre de la persona que recibirá la factura.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 4 -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="step-number">4</div>
+                Factura
+            </div>
+            <div class="accordion-content">
+                <div class="content-box">
+                    <p>Una vez completado el pago y firmada la declaratoria, generaremos tu factura. Podrás recogerla en Tesla o recibirla el mismo día de la entrega.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 5 -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="step-number">5</div>
+                Tramita tus placas y seguro
+            </div>
+            <div class="accordion-content">
+                <div class="content-box">
+                    <p>Con la factura en mano, tramita tus placas o permiso de circulación temporal y contrata tu póliza de seguro (puede ser con Tesla o por tu cuenta).</p>
+                    <p class="important"><strong>Nota:</strong> Tesla no hace los trámites de placas directamente, pero puede recomendarte gestores especializados.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 6 -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="step-number">6</div>
+                Día de entrega
+            </div>
+            <div class="accordion-content">
+                <div class="content-box">
+                    <p>Preséntate en Tesla en la fecha y hora acordada con tus placas y seguro. Recibirás una inducción completa y te llevarás tu vehículo nuevo.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <button class="share-btn" onclick="shareLink()">🔗 Compartir</button>
+    <footer>
+        ¡Bienvenido a la familia TESLA! 🎉
+    </footer>
+
+    <button class="share-btn" onclick="shareLink()">🔗 Compartir Guía</button>
 
     <script>
         function toggleAccordion(header) {
@@ -93,14 +233,15 @@
         }
 
         function shareLink() {
+            const url = window.location.href;
             if (navigator.share) {
                 navigator.share({
                     title: 'Guía Tesla - Proceso de Entrega',
-                    text: 'Aquí tienes la guía completa para tu entrega Tesla',
-                    url: window.location.href
+                    text: 'Guía completa para la entrega de tu Tesla',
+                    url: url
                 });
             } else {
-                alert('Copia este enlace: ' + window.location.href);
+                prompt('Copia este enlace:', url);
             }
         }
     </script>
